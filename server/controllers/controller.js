@@ -11,8 +11,14 @@ async function saveURL({ body }, res) {
     res.status(400).send("failed to save");
   }
 }
-const getURL = (req, res) => {
-  res.status(200).send("got short URL");
-};
+async function getURL({ params }, res) {
+  try {
+    const { shortURL } = params;
+    const { longURL } = await URL.findOne({ shortURL });
+    res.status(200).send(longURL);
+  } catch (err) {
+    res.status(404).send({ error: "no such URL found" });
+  }
+}
 
 module.exports = { saveURL, getURL };

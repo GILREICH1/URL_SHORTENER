@@ -6,14 +6,11 @@ const db = require("../models/database");
 const request = supertest(app);
 
 afterAll(async () => {
+  await db.dropCollection("urls");
   await db.close();
 });
 
 describe("/getShortURL endpoint", () => {
-  afterEach(async () => {
-    await db.dropCollection("urls");
-  });
-
   it("should post url to urls collection", async () => {
     await request
       .post("/getShortURL")
@@ -35,13 +32,10 @@ describe("/getShortURL endpoint", () => {
 });
 
 describe("/getLongURL endpoint", () => {
-  afterEach(async () => {
-    await db.dropCollection("urls");
-  });
-
   it("should return useful error if no URL found", async () => {
-    const response = await request.get("/getLongURL/L*-_-%");
-
-    expect(response.body).toEqual("no such URL");
+    const nonexistentURL = "123456";
+    const response = await request.get(`/getLongURL/${nonexistentURL}`);
+    expect(response.status).toBe(404);
+    expect(response.body.error).toBe("no such URL found");
   });
 });
