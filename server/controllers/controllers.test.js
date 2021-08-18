@@ -29,7 +29,7 @@ describe("/saveURL endpoint", () => {
       .send(mocks.longURL)
       .expect(201);
 
-    expect(response.shortURL).toBeDefined();
-    expect(response.shortURL).toMatch(/^[a-zA-Z0-9]{6,}$/);
+    expect(response.body.shortURL).toBeDefined();
+    expect(response.body.shortURL).toMatch(/^[A-Za-z0-9_-]{6,}$/);
   });
 });
