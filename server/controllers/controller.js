@@ -14,10 +14,11 @@ async function saveURL({ body }, res) {
 async function getURL({ params }, res) {
   try {
     const { shortURL } = params;
-    const { longURL } = await URL.findOne({ shortURL });
-    res.status(200).send(longURL);
-  } catch (err) {
-    res.status(404).send({ error: "no such URL found" });
+    const urlDBObject = await URL.findOne({ shortURL });
+    if (!urlDBObject) throw "no such URL found";
+    res.status(200).send(urlDBObject);
+  } catch (error) {
+    res.status(404).send({ error });
   }
 }
 
