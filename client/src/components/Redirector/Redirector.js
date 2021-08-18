@@ -5,7 +5,6 @@ import { base_url } from "../../utils/constants";
 
 function Redirector() {
   const { shortURL } = useParams();
-  console.log(shortURL);
 
   useEffect(() => {
     incrementVisits(shortURL);
@@ -19,7 +18,7 @@ function Redirector() {
 
   return (
     <p>
-      You're short URL is {base_url}/short/{shortURL}
+      You're short URL is {window.location.href}/short/{shortURL}
     </p>
   );
 }

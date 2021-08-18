@@ -30,9 +30,7 @@ async function incrementVisit({ params }, res) {
       { $inc: { visits: 1 } }
     ).exec();
     if (!urlDBObject) throw "no such URL found";
-    console.log(urlDBObject.visits);
     urlDBObject.visits = urlDBObject.visits + 1;
-    console.log(urlDBObject.visits);
     res.status(200).send(urlDBObject);
   } catch (error) {
     res.status(404).send({ error });
