@@ -19,7 +19,7 @@ function Form() {
       className="form__input"
       value={longURL}
       type="text"
-      placeholder="Add custom task for this month"
+      placeholder="paste in long URL here"
       onChange={(e) => setLongURL(e.target.value)}
     ></input>
     {shortURL ? <ShortURL shortURL={shortURL} /> : null}
