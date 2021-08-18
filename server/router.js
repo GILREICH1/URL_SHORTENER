@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const { saveURL } = require("./controller");
+const { saveURL, getURL } = require("./controllers/controller");
 
-router.get("/test", saveURL);
+router.get("/getURL", getURL);
+router.post("/saveURL", saveURL);
 
 module.exports = router;
