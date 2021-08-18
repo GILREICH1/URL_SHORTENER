@@ -1,4 +1,4 @@
-const base_url = "http://localhost:3001";
+import { base_url } from "./constants";
 
 export const generateShortURL = async (newURL = {}) => {
   const jsonURL = JSON.stringify(newURL);
