@@ -13,3 +13,9 @@ export const generateShortURL = async (newURL = {}) => {
   const response = await JSONresponse.json();
   return response.shortURL;
 };
+
+export const getLongURL = async (shortURL) => {
+  const JSONresponse = await fetch(`${base_url}/getURL/${shortURL}`);
+  const response = await JSONresponse.json();
+  return response.longURL;
+};
