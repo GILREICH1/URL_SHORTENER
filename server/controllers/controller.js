@@ -22,4 +22,21 @@ async function getURL({ params }, res) {
   }
 }
 
-module.exports = { saveURL, getURL };
+async function incrementVisit({ params }, res) {
+  try {
+    const { shortURL } = params;
+    const urlDBObject = await URL.findOneAndUpdate(
+      { shortURL },
+      { $inc: { visits: 1 } }
+    ).exec();
+    if (!urlDBObject) throw "no such URL found";
+    console.log(urlDBObject.visits);
+    urlDBObject.visits = urlDBObject.visits + 1;
+    console.log(urlDBObject.visits);
+    res.status(200).send(urlDBObject);
+  } catch (error) {
+    res.status(404).send({ error });
+  }
+}
+
+module.exports = { saveURL, getURL, incrementVisit };
