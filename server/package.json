@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "test:watch": "cross-env NODE_ENV=test jest --watch --testTimeout=10000",
     "start": "node index.js"
   },
   "repository": {
