@@ -16,7 +16,7 @@ describe("/getShortURL endpoint", () => {
 
   it("should post url to urls collection", async () => {
     await request
-      .post("/saveURL")
+      .post("/getShortURL")
       .set("Content-Type", "application/json")
       .send(mocks.longURL)
       .expect(201);
@@ -31,5 +31,17 @@ describe("/getShortURL endpoint", () => {
 
     expect(response.body.shortURL).toBeDefined();
     expect(response.body.shortURL).toMatch(/^[A-Za-z0-9_-]{6,}$/);
+  });
+});
+
+describe("/getLongURL endpoint", () => {
+  afterEach(async () => {
+    await db.dropCollection("urls");
+  });
+
+  it("should return useful error if no URL found", async () => {
+    const response = await request.get("/getLongURL/L*-_-%");
+
+    expect(response.body).toEqual("no such URL");
   });
 });
