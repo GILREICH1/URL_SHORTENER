@@ -14,6 +14,8 @@ function Form() {
     setLongURL("");
   };
 
+  // TODO local storage of created short URLS
+
   return (
     <form className="submitForm" onSubmit={(e) => submitHandler(e)}>
       <input
