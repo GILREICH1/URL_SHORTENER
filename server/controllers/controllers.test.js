@@ -9,7 +9,7 @@ afterAll(async () => {
   await db.close();
 });
 
-describe("/saveURL endpoint", () => {
+describe("/getShortURL endpoint", () => {
   afterEach(async () => {
     await db.dropCollection("urls");
   });
@@ -24,7 +24,7 @@ describe("/saveURL endpoint", () => {
 
   it("should save long url to DB and return a shortURL", async () => {
     const response = await request
-      .post("/saveURL")
+      .post("/getShortURL")
       .set("Content-Type", "application/json")
       .send(mocks.longURL)
       .expect(201);
