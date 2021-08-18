@@ -110,8 +110,6 @@ The quality and maintainability of our software is very important to us, so we a
 
 ## The Challenge
 
----
-
 ## URL Shortener
 
 Write a web application that allows users to take a long URL and convert it to a shortened URL similar to https://goo.gl/.
@@ -124,8 +122,8 @@ Write a web application that allows users to take a long URL and convert it to a
 
 ### Constraints
 
-- This app must use a persistent datastore that others can use. That means a local, in-memory system isn’t appropriate.
-- Don’t allow an invalid URL to be entered into the form.
+[] This app must use a persistent datastore that others can use. That means a local, in-memory system isn’t appropriate.
+[] Don’t allow an invalid URL to be entered into the form.
 
 </details>
 
