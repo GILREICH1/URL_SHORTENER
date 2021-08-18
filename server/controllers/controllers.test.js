@@ -10,10 +10,10 @@ afterAll(async () => {
   await db.close();
 });
 
-describe("/getShortURL endpoint", () => {
+describe("/saveURL endpoint", () => {
   it("should post url to urls collection", async () => {
     await request
-      .post("/getShortURL")
+      .post("/saveURL")
       .set("Content-Type", "application/json")
       .send(mocks.longURL)
       .expect(201);
@@ -21,7 +21,7 @@ describe("/getShortURL endpoint", () => {
 
   it("should save long url to DB and return a shortURL", async () => {
     const response = await request
-      .post("/getShortURL")
+      .post("/saveURL")
       .set("Content-Type", "application/json")
       .send(mocks.longURLRequest)
       .expect(201);
@@ -31,10 +31,10 @@ describe("/getShortURL endpoint", () => {
   });
 });
 
-describe("/getLongURL endpoint", () => {
+describe("/getURL endpoint", () => {
   it("should return useful error if no URL found", async () => {
     const nonexistentURL = "123456";
-    const response = await request.get(`/getLongURL/${nonexistentURL}`);
+    const response = await request.get(`/getURL/${nonexistentURL}`);
     expect(response.status).toBe(404);
     expect(response.body.error).toBe("no such URL found");
   });
@@ -42,14 +42,14 @@ describe("/getLongURL endpoint", () => {
   it("should return the corrent longURL when shortURL provided", async () => {
     // shorten and save a URL to DB
     const postResponse = await request
-      .post("/getShortURL")
+      .post("/saveURL")
       .set("Content-Type", "application/json")
       .send(mocks.longURLRequest)
       .expect(201);
     const shortenedURL = postResponse.body.shortURL;
 
     // retreive shortenedURL from DB
-    const getResponse = await request.get(`/getLongURL/${shortenedURL}`);
+    const getResponse = await request.get(`/getURL/${shortenedURL}`);
     expect(getResponse.status).toBe(200);
     expect(getResponse.body.longURL).toBe(mocks.longURLRequest.longURL);
   });
