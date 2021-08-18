@@ -110,31 +110,17 @@ The quality and maintainability of our software is very important to us, so we a
 
 ## The Challenge
 
-We would like you to complete the following coding exercise - we anticipate this taking you no more than 45 minutes.
-
-You can use any programming language you like. Ideally your solution will include unit tests, preferably written using a [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) approach. The code related to your solution should be placed in a subfolder and be easy to execute - ideally **clone** → **install** → **run**
-
-Please commit your code back to this repository frequently. We expect you to complete this exercise within a day, but if takes a little longer don't worry - just let us know when you're done.
-
-> NOTE: Due to 2FA if you're using HTTPS to access this repo, you must create a personal access token to use as a password when [authenticating to GitHub on the command line using HTTPS](https://help.github.com/en/github/authenticating-to-github/accessing-github-using-two-factor-authentication#authenticating-on-the-command-line-using-https) URLs.
-
-
----
-
-<details>
-<summary>Exercise 1 (45 minutes)</summary>
-
 ---
 
 ## URL Shortener
 
 Write a web application that allows users to take a long URL and convert it to a shortened URL similar to https://goo.gl/.
 
-- The program should have a form that accepts the long URL.
-- The program should generate a short local URL like /abc1234 and store the short URL and the long URL together in a persistent data store.
-- The program should redirect visitors to the long URL when the short URL is visited.
-- The program should track the number of times the short URL is visited.
-- The program should have a statistics page for the short URL, such as /abc1234/stats. Visiting this URL should show the short URL, the long URL, and the number of times the short URL was accessed.
+[x] The program should have a form that accepts the long URL.
+[x] The program should generate a short local URL like /abc1234 and store the short URL and the long URL together in a persistent data store.
+[x] The program should redirect visitors to the long URL when the short URL is visited.
+[ ] The program should track the number of times the short URL is visited.
+[ ] The program should have a statistics page for the short URL, such as /abc1234/stats. Visiting this URL should show the short URL, the long URL, and the number of times the short URL was accessed.
 
 ### Constraints
 
@@ -144,7 +130,6 @@ Write a web application that allows users to take a long URL and convert it to a
 </details>
 
 ---
-
 
 Good Luck!
 
